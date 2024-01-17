@@ -14,6 +14,7 @@ declare -a THRIFT_PROTOCOLS=(
     "wechat-mini_program"
 )
 
+# mvn -B archetype:generate -DgroupId=com.github.saturn_xiv -DartifactId=coconut -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4
 function generate_thrift_for_java() {
     echo "generate thrift-java"
     local target=$1/com/github/saturn_xiv/coconut
@@ -23,7 +24,7 @@ function generate_thrift_for_java() {
     mkdir -p $1
 
     for p in "${THRIFT_PROTOCOLS[@]}"; do
-        thrift -out $1 --gen java -r $PROTOCOLS_DIR/$p.thrift
+        thrift -out $1 --gen java:generated_annotations=suppress -r $PROTOCOLS_DIR/$p.thrift
     done
 }
 
