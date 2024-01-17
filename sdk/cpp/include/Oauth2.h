@@ -10,7 +10,7 @@
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include <memory>
-#include "wechat-oauth2_types.h"
+#include "wechat_oauth2_types.h"
 
 namespace coconut { namespace wechat { namespace oauth2 { namespace v1 {
 

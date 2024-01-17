@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef wechat-mini_program_TYPES_H
-#define wechat-mini_program_TYPES_H
+#ifndef google_oauth2_TYPES_H
+#define google_oauth2_TYPES_H
 
 #include <iosfwd>
 
@@ -19,7 +19,7 @@
 #include <memory>
 
 
-namespace coconut { namespace wechat { namespace mini_program { namespace v1 {
+namespace coconut { namespace google { namespace oauth2 { namespace v1 {
 
 }}}} // namespace
 

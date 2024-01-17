@@ -1,1 +1,7 @@
 #include "coconut/application.hpp"
+#include "coconut/auth.hpp"
+#include "coconut/monitor.hpp"
+#include "coconut/google.hpp"
+#include "coconut/wechat.hpp"
+#include "coconut/version.hpp"
+#include "coconut/controllers.hpp"

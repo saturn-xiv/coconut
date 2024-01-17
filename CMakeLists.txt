@@ -26,6 +26,7 @@ configure_file(include/coconut/version.h.in ${PROJECT_SOURCE_DIR}/include/coconu
 # --------------------------------------------------------
 
 find_package(OpenSSL REQUIRED)
+find_package(PostgreSQL REQUIRED)
 
 # --------------------------------------------------------
 
@@ -45,14 +46,6 @@ FetchContent_Declare(tink
   GIT_REPOSITORY  "https://github.com/tink-crypto/tink-cc.git"
   GIT_TAG         "v2.1.1" 
 )
-FetchContent_Declare(thrift
-  GIT_REPOSITORY    "https://github.com/apache/thrift.git"
-  GIT_TAG           "v0.19.0"
-)
-FetchContent_Declare(nlohmann_json
-  GIT_REPOSITORY    "https://github.com/nlohmann/json.git"
-  GIT_TAG           "v3.11.3"
-)
 FetchContent_Declare(inja
   GIT_REPOSITORY    "https://github.com/pantor/inja.git"
   GIT_TAG           "v3.4.0"
@@ -65,11 +58,11 @@ FetchContent_Declare(pqxx
   GIT_REPOSITORY    "https://github.com/jtv/libpqxx.git"
   GIT_TAG           "7.8.1"
 )
-FetchContent_MakeAvailable(pqxx spdlog argparse tomlplusplus nlohmann_json inja httplib thrift tink)
+FetchContent_MakeAvailable(pqxx spdlog argparse tomlplusplus inja httplib tink)
 
 # --------------------------------------------------------
 
-add_subdirectory(gourd)
+add_subdirectory(sdk/cpp)
 
 # --------------------------------------------------------
 
@@ -79,12 +72,8 @@ file(GLOB GOURD_SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/sdk/cpp/src
 add_executable(coconut ${GOURD_SOURCE_LIST} ${SOURCE_LIST})
 set_target_properties(coconut PROPERTIES LINK_FLAGS_RELEASE -s)
 
-target_link_libraries(coconut
+target_link_libraries(coconut gourd
   ${OPENSSL_LIBRARIES} ${PostgreSQL_LIBRARIES}
-  
-  event_core event_extra event_pthreads
-  
-  thrift thriftnb thriftz
 
   tink::static
   tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config tink::jwt::jwt_signature_config
@@ -98,9 +87,6 @@ target_include_directories(coconut PUBLIC
   ${argparse_SOURCE_DIR}/include
   ${tomlplusplus_SOURCE_DIR}/include
 
-  ${thrift_SOURCE_DIR}/lib/cpp/src
-  ${thrift_SOURCE_DIR}/compiler/cpp/src
-  ${thrift_BINARY_DIR}
 )
 
 

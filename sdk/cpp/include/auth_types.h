@@ -168,12 +168,13 @@ void swap(Permission &a, Permission &b);
 std::ostream& operator<<(std::ostream& out, const Permission& obj);
 
 typedef struct _UserInfo__isset {
-  _UserInfo__isset() : id(false), real_name(false), nickname(false), email(false), uid(false), current_sign_in_ip(false), current_sign_in_at(false), last_sign_in_ip(false), last_sign_in_at(false), sign_in_total(false), locale(false), timezone(false) {}
+  _UserInfo__isset() : id(false), nickname(false), email(false), uid(false), real_name(false), avatar(false), current_sign_in_ip(false), current_sign_in_at(false), last_sign_in_ip(false), last_sign_in_at(false), sign_in_total(false), locale(false), timezone(false) {}
   bool id :1;
-  bool real_name :1;
   bool nickname :1;
   bool email :1;
   bool uid :1;
+  bool real_name :1;
+  bool avatar :1;
   bool current_sign_in_ip :1;
   bool current_sign_in_at :1;
   bool last_sign_in_ip :1;
@@ -190,10 +191,11 @@ class UserInfo : public virtual ::apache::thrift::TBase {
   UserInfo& operator=(const UserInfo&);
   UserInfo() noexcept
            : id(0),
-             real_name(),
              nickname(),
              email(),
              uid(),
+             real_name(),
+             avatar(),
              current_sign_in_ip(),
              current_sign_in_at(0),
              last_sign_in_ip(),
@@ -205,10 +207,11 @@ class UserInfo : public virtual ::apache::thrift::TBase {
 
   virtual ~UserInfo() noexcept;
   int64_t id;
-  std::string real_name;
   std::string nickname;
   std::string email;
   std::string uid;
+  std::string real_name;
+  std::string avatar;
   std::string current_sign_in_ip;
   int64_t current_sign_in_at;
   std::string last_sign_in_ip;
@@ -221,13 +224,15 @@ class UserInfo : public virtual ::apache::thrift::TBase {
 
   void __set_id(const int64_t val);
 
-  void __set_real_name(const std::string& val);
-
   void __set_nickname(const std::string& val);
 
   void __set_email(const std::string& val);
 
   void __set_uid(const std::string& val);
+
+  void __set_real_name(const std::string& val);
+
+  void __set_avatar(const std::string& val);
 
   void __set_current_sign_in_ip(const std::string& val);
 
@@ -247,13 +252,15 @@ class UserInfo : public virtual ::apache::thrift::TBase {
   {
     if (!(id == rhs.id))
       return false;
-    if (!(real_name == rhs.real_name))
-      return false;
     if (!(nickname == rhs.nickname))
       return false;
     if (!(email == rhs.email))
       return false;
     if (!(uid == rhs.uid))
+      return false;
+    if (!(real_name == rhs.real_name))
+      return false;
+    if (!(avatar == rhs.avatar))
       return false;
     if (!(current_sign_in_ip == rhs.current_sign_in_ip))
       return false;

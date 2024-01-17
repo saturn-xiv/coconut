@@ -9,9 +9,9 @@ declare -a THRIFT_PROTOCOLS=(
     "auth"
     "monitor"
 
-    "google-oauth2"
-    "wechat-oauth2"
-    "wechat-mini_program"
+    "google_oauth2"
+    "wechat_oauth2"
+    "wechat_mini_program"
 )
 
 # mvn -B archetype:generate -DgroupId=com.github.saturn_xiv -DartifactId=coconut -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4

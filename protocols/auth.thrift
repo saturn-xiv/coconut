@@ -17,17 +17,19 @@ struct Permission {
 
 struct UserInfo {
     1:i64 id;
-    2:string real_name;
-    3:string nickname;
-    4:string email;
-    5:string uid;
+    2:string nickname;
+    3:string email;
+    4:string uid;
+
+    11:string real_name;
+    12:string avatar;
     
     85:string current_sign_in_ip;
     86:i64 current_sign_in_at;
     87:string last_sign_in_ip;
     88:i64 last_sign_in_at;
     89:i64 sign_in_total;
-
+    
     98:string locale;
     99:string timezone;
 }
@@ -80,17 +82,24 @@ service User {
     void unlock_by_token(1:string token);
     void forgot_password(1:string email);
     void reset_password(1:string token, 2:string password);
+    
+    void set_real_name(1:i64 id, 2:string real_name);
+    void set_avatar(1:i64 id, 2:string avatar);
+    void set_locale(1:i64 id, 2:string locale);
+    void set_timezone(1:i64 id, 2:string timezone);
+    void set_password(1:i64 id, 2:string password);
 
     void confirm(1:i64 id);
     void lock(1:i64 id);
     void unlock(1:i64 id);
     void enable(1:i64 id);
     void disable(1:i64 id);
-    void set_password(1:i64 id, 2:string password);
+
     list<UserInfo> all();
     UserInfo by_nickname(1:string nickname);
     UserInfo by_email(1:string email);
     UserInfo by_id(1:i64 id);
+    UserInfo by_uid(1:string uid);
 }
 
 # -----------------------------------------------------------------------------

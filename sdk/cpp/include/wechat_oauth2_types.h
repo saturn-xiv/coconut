@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef google-oauth2_TYPES_H
-#define google-oauth2_TYPES_H
+#ifndef wechat_oauth2_TYPES_H
+#define wechat_oauth2_TYPES_H
 
 #include <iosfwd>
 
@@ -19,7 +19,7 @@
 #include <memory>
 
 
-namespace coconut { namespace google { namespace oauth2 { namespace v1 {
+namespace coconut { namespace wechat { namespace oauth2 { namespace v1 {
 
 }}}} // namespace
 

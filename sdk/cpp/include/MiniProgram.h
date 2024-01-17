@@ -10,7 +10,7 @@
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include <memory>
-#include "wechat-mini_program_types.h"
+#include "wechat_mini_program_types.h"
 
 namespace coconut { namespace wechat { namespace mini_program { namespace v1 {
 

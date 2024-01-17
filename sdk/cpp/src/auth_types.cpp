@@ -318,10 +318,6 @@ void UserInfo::__set_id(const int64_t val) {
   this->id = val;
 }
 
-void UserInfo::__set_real_name(const std::string& val) {
-  this->real_name = val;
-}
-
 void UserInfo::__set_nickname(const std::string& val) {
   this->nickname = val;
 }
@@ -332,6 +328,14 @@ void UserInfo::__set_email(const std::string& val) {
 
 void UserInfo::__set_uid(const std::string& val) {
   this->uid = val;
+}
+
+void UserInfo::__set_real_name(const std::string& val) {
+  this->real_name = val;
+}
+
+void UserInfo::__set_avatar(const std::string& val) {
+  this->avatar = val;
 }
 
 void UserInfo::__set_current_sign_in_ip(const std::string& val) {
@@ -399,21 +403,13 @@ uint32_t UserInfo::read(::apache::thrift::protocol::TProtocol* iprot) {
         break;
       case 2:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->real_name);
-          this->__isset.real_name = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      case 3:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->nickname);
           this->__isset.nickname = true;
         } else {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 4:
+      case 3:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->email);
           this->__isset.email = true;
@@ -421,10 +417,26 @@ uint32_t UserInfo::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
-      case 5:
+      case 4:
         if (ftype == ::apache::thrift::protocol::T_STRING) {
           xfer += iprot->readString(this->uid);
           this->__isset.uid = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 11:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->real_name);
+          this->__isset.real_name = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 12:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->avatar);
+          this->__isset.avatar = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -506,20 +518,24 @@ uint32_t UserInfo::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeI64(this->id);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("real_name", ::apache::thrift::protocol::T_STRING, 2);
-  xfer += oprot->writeString(this->real_name);
-  xfer += oprot->writeFieldEnd();
-
-  xfer += oprot->writeFieldBegin("nickname", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeFieldBegin("nickname", ::apache::thrift::protocol::T_STRING, 2);
   xfer += oprot->writeString(this->nickname);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 4);
+  xfer += oprot->writeFieldBegin("email", ::apache::thrift::protocol::T_STRING, 3);
   xfer += oprot->writeString(this->email);
   xfer += oprot->writeFieldEnd();
 
-  xfer += oprot->writeFieldBegin("uid", ::apache::thrift::protocol::T_STRING, 5);
+  xfer += oprot->writeFieldBegin("uid", ::apache::thrift::protocol::T_STRING, 4);
   xfer += oprot->writeString(this->uid);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("real_name", ::apache::thrift::protocol::T_STRING, 11);
+  xfer += oprot->writeString(this->real_name);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("avatar", ::apache::thrift::protocol::T_STRING, 12);
+  xfer += oprot->writeString(this->avatar);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldBegin("current_sign_in_ip", ::apache::thrift::protocol::T_STRING, 85);
@@ -558,10 +574,11 @@ uint32_t UserInfo::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(UserInfo &a, UserInfo &b) {
   using ::std::swap;
   swap(a.id, b.id);
-  swap(a.real_name, b.real_name);
   swap(a.nickname, b.nickname);
   swap(a.email, b.email);
   swap(a.uid, b.uid);
+  swap(a.real_name, b.real_name);
+  swap(a.avatar, b.avatar);
   swap(a.current_sign_in_ip, b.current_sign_in_ip);
   swap(a.current_sign_in_at, b.current_sign_in_at);
   swap(a.last_sign_in_ip, b.last_sign_in_ip);
@@ -574,10 +591,11 @@ void swap(UserInfo &a, UserInfo &b) {
 
 UserInfo::UserInfo(const UserInfo& other4) {
   id = other4.id;
-  real_name = other4.real_name;
   nickname = other4.nickname;
   email = other4.email;
   uid = other4.uid;
+  real_name = other4.real_name;
+  avatar = other4.avatar;
   current_sign_in_ip = other4.current_sign_in_ip;
   current_sign_in_at = other4.current_sign_in_at;
   last_sign_in_ip = other4.last_sign_in_ip;
@@ -589,10 +607,11 @@ UserInfo::UserInfo(const UserInfo& other4) {
 }
 UserInfo& UserInfo::operator=(const UserInfo& other5) {
   id = other5.id;
-  real_name = other5.real_name;
   nickname = other5.nickname;
   email = other5.email;
   uid = other5.uid;
+  real_name = other5.real_name;
+  avatar = other5.avatar;
   current_sign_in_ip = other5.current_sign_in_ip;
   current_sign_in_at = other5.current_sign_in_at;
   last_sign_in_ip = other5.last_sign_in_ip;
@@ -607,10 +626,11 @@ void UserInfo::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "UserInfo(";
   out << "id=" << to_string(id);
-  out << ", " << "real_name=" << to_string(real_name);
   out << ", " << "nickname=" << to_string(nickname);
   out << ", " << "email=" << to_string(email);
   out << ", " << "uid=" << to_string(uid);
+  out << ", " << "real_name=" << to_string(real_name);
+  out << ", " << "avatar=" << to_string(avatar);
   out << ", " << "current_sign_in_ip=" << to_string(current_sign_in_ip);
   out << ", " << "current_sign_in_at=" << to_string(current_sign_in_at);
   out << ", " << "last_sign_in_ip=" << to_string(last_sign_in_ip);

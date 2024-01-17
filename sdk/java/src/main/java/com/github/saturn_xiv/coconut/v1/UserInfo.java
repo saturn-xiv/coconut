@@ -11,10 +11,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("UserInfo");
 
   private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.I64, (short)1);
-  private static final org.apache.thrift.protocol.TField REAL_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("real_name", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField NICKNAME_FIELD_DESC = new org.apache.thrift.protocol.TField("nickname", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)4);
-  private static final org.apache.thrift.protocol.TField UID_FIELD_DESC = new org.apache.thrift.protocol.TField("uid", org.apache.thrift.protocol.TType.STRING, (short)5);
+  private static final org.apache.thrift.protocol.TField NICKNAME_FIELD_DESC = new org.apache.thrift.protocol.TField("nickname", org.apache.thrift.protocol.TType.STRING, (short)2);
+  private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField UID_FIELD_DESC = new org.apache.thrift.protocol.TField("uid", org.apache.thrift.protocol.TType.STRING, (short)4);
+  private static final org.apache.thrift.protocol.TField REAL_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("real_name", org.apache.thrift.protocol.TType.STRING, (short)11);
+  private static final org.apache.thrift.protocol.TField AVATAR_FIELD_DESC = new org.apache.thrift.protocol.TField("avatar", org.apache.thrift.protocol.TType.STRING, (short)12);
   private static final org.apache.thrift.protocol.TField CURRENT_SIGN_IN_IP_FIELD_DESC = new org.apache.thrift.protocol.TField("current_sign_in_ip", org.apache.thrift.protocol.TType.STRING, (short)85);
   private static final org.apache.thrift.protocol.TField CURRENT_SIGN_IN_AT_FIELD_DESC = new org.apache.thrift.protocol.TField("current_sign_in_at", org.apache.thrift.protocol.TType.I64, (short)86);
   private static final org.apache.thrift.protocol.TField LAST_SIGN_IN_IP_FIELD_DESC = new org.apache.thrift.protocol.TField("last_sign_in_ip", org.apache.thrift.protocol.TType.STRING, (short)87);
@@ -27,10 +28,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new UserInfoTupleSchemeFactory();
 
   public long id; // required
-  public @org.apache.thrift.annotation.Nullable java.lang.String real_name; // required
   public @org.apache.thrift.annotation.Nullable java.lang.String nickname; // required
   public @org.apache.thrift.annotation.Nullable java.lang.String email; // required
   public @org.apache.thrift.annotation.Nullable java.lang.String uid; // required
+  public @org.apache.thrift.annotation.Nullable java.lang.String real_name; // required
+  public @org.apache.thrift.annotation.Nullable java.lang.String avatar; // required
   public @org.apache.thrift.annotation.Nullable java.lang.String current_sign_in_ip; // required
   public long current_sign_in_at; // required
   public @org.apache.thrift.annotation.Nullable java.lang.String last_sign_in_ip; // required
@@ -42,10 +44,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     ID((short)1, "id"),
-    REAL_NAME((short)2, "real_name"),
-    NICKNAME((short)3, "nickname"),
-    EMAIL((short)4, "email"),
-    UID((short)5, "uid"),
+    NICKNAME((short)2, "nickname"),
+    EMAIL((short)3, "email"),
+    UID((short)4, "uid"),
+    REAL_NAME((short)11, "real_name"),
+    AVATAR((short)12, "avatar"),
     CURRENT_SIGN_IN_IP((short)85, "current_sign_in_ip"),
     CURRENT_SIGN_IN_AT((short)86, "current_sign_in_at"),
     LAST_SIGN_IN_IP((short)87, "last_sign_in_ip"),
@@ -70,14 +73,16 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       switch(fieldId) {
         case 1: // ID
           return ID;
-        case 2: // REAL_NAME
-          return REAL_NAME;
-        case 3: // NICKNAME
+        case 2: // NICKNAME
           return NICKNAME;
-        case 4: // EMAIL
+        case 3: // EMAIL
           return EMAIL;
-        case 5: // UID
+        case 4: // UID
           return UID;
+        case 11: // REAL_NAME
+          return REAL_NAME;
+        case 12: // AVATAR
+          return AVATAR;
         case 85: // CURRENT_SIGN_IN_IP
           return CURRENT_SIGN_IN_IP;
         case 86: // CURRENT_SIGN_IN_AT
@@ -145,13 +150,15 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.REAL_NAME, new org.apache.thrift.meta_data.FieldMetaData("real_name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.NICKNAME, new org.apache.thrift.meta_data.FieldMetaData("nickname", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.UID, new org.apache.thrift.meta_data.FieldMetaData("uid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.REAL_NAME, new org.apache.thrift.meta_data.FieldMetaData("real_name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.AVATAR, new org.apache.thrift.meta_data.FieldMetaData("avatar", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.CURRENT_SIGN_IN_IP, new org.apache.thrift.meta_data.FieldMetaData("current_sign_in_ip", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
@@ -176,10 +183,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
 
   public UserInfo(
     long id,
-    java.lang.String real_name,
     java.lang.String nickname,
     java.lang.String email,
     java.lang.String uid,
+    java.lang.String real_name,
+    java.lang.String avatar,
     java.lang.String current_sign_in_ip,
     long current_sign_in_at,
     java.lang.String last_sign_in_ip,
@@ -191,10 +199,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     this();
     this.id = id;
     setIdIsSet(true);
-    this.real_name = real_name;
     this.nickname = nickname;
     this.email = email;
     this.uid = uid;
+    this.real_name = real_name;
+    this.avatar = avatar;
     this.current_sign_in_ip = current_sign_in_ip;
     this.current_sign_in_at = current_sign_in_at;
     setCurrent_sign_in_atIsSet(true);
@@ -213,9 +222,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   public UserInfo(UserInfo other) {
     __isset_bitfield = other.__isset_bitfield;
     this.id = other.id;
-    if (other.isSetReal_name()) {
-      this.real_name = other.real_name;
-    }
     if (other.isSetNickname()) {
       this.nickname = other.nickname;
     }
@@ -224,6 +230,12 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     }
     if (other.isSetUid()) {
       this.uid = other.uid;
+    }
+    if (other.isSetReal_name()) {
+      this.real_name = other.real_name;
+    }
+    if (other.isSetAvatar()) {
+      this.avatar = other.avatar;
     }
     if (other.isSetCurrent_sign_in_ip()) {
       this.current_sign_in_ip = other.current_sign_in_ip;
@@ -251,10 +263,11 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   public void clear() {
     setIdIsSet(false);
     this.id = 0;
-    this.real_name = null;
     this.nickname = null;
     this.email = null;
     this.uid = null;
+    this.real_name = null;
+    this.avatar = null;
     this.current_sign_in_ip = null;
     setCurrent_sign_in_atIsSet(false);
     this.current_sign_in_at = 0;
@@ -288,31 +301,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
 
   public void setIdIsSet(boolean value) {
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __ID_ISSET_ID, value);
-  }
-
-  @org.apache.thrift.annotation.Nullable
-  public java.lang.String getReal_name() {
-    return this.real_name;
-  }
-
-  public UserInfo setReal_name(@org.apache.thrift.annotation.Nullable java.lang.String real_name) {
-    this.real_name = real_name;
-    return this;
-  }
-
-  public void unsetReal_name() {
-    this.real_name = null;
-  }
-
-  /** Returns true if field real_name is set (has been assigned a value) and false otherwise */
-  public boolean isSetReal_name() {
-    return this.real_name != null;
-  }
-
-  public void setReal_nameIsSet(boolean value) {
-    if (!value) {
-      this.real_name = null;
-    }
   }
 
   @org.apache.thrift.annotation.Nullable
@@ -387,6 +375,56 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
   public void setUidIsSet(boolean value) {
     if (!value) {
       this.uid = null;
+    }
+  }
+
+  @org.apache.thrift.annotation.Nullable
+  public java.lang.String getReal_name() {
+    return this.real_name;
+  }
+
+  public UserInfo setReal_name(@org.apache.thrift.annotation.Nullable java.lang.String real_name) {
+    this.real_name = real_name;
+    return this;
+  }
+
+  public void unsetReal_name() {
+    this.real_name = null;
+  }
+
+  /** Returns true if field real_name is set (has been assigned a value) and false otherwise */
+  public boolean isSetReal_name() {
+    return this.real_name != null;
+  }
+
+  public void setReal_nameIsSet(boolean value) {
+    if (!value) {
+      this.real_name = null;
+    }
+  }
+
+  @org.apache.thrift.annotation.Nullable
+  public java.lang.String getAvatar() {
+    return this.avatar;
+  }
+
+  public UserInfo setAvatar(@org.apache.thrift.annotation.Nullable java.lang.String avatar) {
+    this.avatar = avatar;
+    return this;
+  }
+
+  public void unsetAvatar() {
+    this.avatar = null;
+  }
+
+  /** Returns true if field avatar is set (has been assigned a value) and false otherwise */
+  public boolean isSetAvatar() {
+    return this.avatar != null;
+  }
+
+  public void setAvatarIsSet(boolean value) {
+    if (!value) {
+      this.avatar = null;
     }
   }
 
@@ -570,14 +608,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       }
       break;
 
-    case REAL_NAME:
-      if (value == null) {
-        unsetReal_name();
-      } else {
-        setReal_name((java.lang.String)value);
-      }
-      break;
-
     case NICKNAME:
       if (value == null) {
         unsetNickname();
@@ -599,6 +629,22 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         unsetUid();
       } else {
         setUid((java.lang.String)value);
+      }
+      break;
+
+    case REAL_NAME:
+      if (value == null) {
+        unsetReal_name();
+      } else {
+        setReal_name((java.lang.String)value);
+      }
+      break;
+
+    case AVATAR:
+      if (value == null) {
+        unsetAvatar();
+      } else {
+        setAvatar((java.lang.String)value);
       }
       break;
 
@@ -668,9 +714,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     case ID:
       return getId();
 
-    case REAL_NAME:
-      return getReal_name();
-
     case NICKNAME:
       return getNickname();
 
@@ -679,6 +722,12 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
 
     case UID:
       return getUid();
+
+    case REAL_NAME:
+      return getReal_name();
+
+    case AVATAR:
+      return getAvatar();
 
     case CURRENT_SIGN_IN_IP:
       return getCurrent_sign_in_ip();
@@ -715,14 +764,16 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     switch (field) {
     case ID:
       return isSetId();
-    case REAL_NAME:
-      return isSetReal_name();
     case NICKNAME:
       return isSetNickname();
     case EMAIL:
       return isSetEmail();
     case UID:
       return isSetUid();
+    case REAL_NAME:
+      return isSetReal_name();
+    case AVATAR:
+      return isSetAvatar();
     case CURRENT_SIGN_IN_IP:
       return isSetCurrent_sign_in_ip();
     case CURRENT_SIGN_IN_AT:
@@ -763,15 +814,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         return false;
     }
 
-    boolean this_present_real_name = true && this.isSetReal_name();
-    boolean that_present_real_name = true && that.isSetReal_name();
-    if (this_present_real_name || that_present_real_name) {
-      if (!(this_present_real_name && that_present_real_name))
-        return false;
-      if (!this.real_name.equals(that.real_name))
-        return false;
-    }
-
     boolean this_present_nickname = true && this.isSetNickname();
     boolean that_present_nickname = true && that.isSetNickname();
     if (this_present_nickname || that_present_nickname) {
@@ -796,6 +838,24 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       if (!(this_present_uid && that_present_uid))
         return false;
       if (!this.uid.equals(that.uid))
+        return false;
+    }
+
+    boolean this_present_real_name = true && this.isSetReal_name();
+    boolean that_present_real_name = true && that.isSetReal_name();
+    if (this_present_real_name || that_present_real_name) {
+      if (!(this_present_real_name && that_present_real_name))
+        return false;
+      if (!this.real_name.equals(that.real_name))
+        return false;
+    }
+
+    boolean this_present_avatar = true && this.isSetAvatar();
+    boolean that_present_avatar = true && that.isSetAvatar();
+    if (this_present_avatar || that_present_avatar) {
+      if (!(this_present_avatar && that_present_avatar))
+        return false;
+      if (!this.avatar.equals(that.avatar))
         return false;
     }
 
@@ -871,10 +931,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
 
     hashCode = hashCode * 8191 + org.apache.thrift.TBaseHelper.hashCode(id);
 
-    hashCode = hashCode * 8191 + ((isSetReal_name()) ? 131071 : 524287);
-    if (isSetReal_name())
-      hashCode = hashCode * 8191 + real_name.hashCode();
-
     hashCode = hashCode * 8191 + ((isSetNickname()) ? 131071 : 524287);
     if (isSetNickname())
       hashCode = hashCode * 8191 + nickname.hashCode();
@@ -886,6 +942,14 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     hashCode = hashCode * 8191 + ((isSetUid()) ? 131071 : 524287);
     if (isSetUid())
       hashCode = hashCode * 8191 + uid.hashCode();
+
+    hashCode = hashCode * 8191 + ((isSetReal_name()) ? 131071 : 524287);
+    if (isSetReal_name())
+      hashCode = hashCode * 8191 + real_name.hashCode();
+
+    hashCode = hashCode * 8191 + ((isSetAvatar()) ? 131071 : 524287);
+    if (isSetAvatar())
+      hashCode = hashCode * 8191 + avatar.hashCode();
 
     hashCode = hashCode * 8191 + ((isSetCurrent_sign_in_ip()) ? 131071 : 524287);
     if (isSetCurrent_sign_in_ip())
@@ -930,16 +994,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
         return lastComparison;
       }
     }
-    lastComparison = java.lang.Boolean.compare(isSetReal_name(), other.isSetReal_name());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetReal_name()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.real_name, other.real_name);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
     lastComparison = java.lang.Boolean.compare(isSetNickname(), other.isSetNickname());
     if (lastComparison != 0) {
       return lastComparison;
@@ -966,6 +1020,26 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     }
     if (isSetUid()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.uid, other.uid);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = java.lang.Boolean.compare(isSetReal_name(), other.isSetReal_name());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetReal_name()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.real_name, other.real_name);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = java.lang.Boolean.compare(isSetAvatar(), other.isSetAvatar());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetAvatar()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.avatar, other.avatar);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -1068,14 +1142,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     sb.append(this.id);
     first = false;
     if (!first) sb.append(", ");
-    sb.append("real_name:");
-    if (this.real_name == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.real_name);
-    }
-    first = false;
-    if (!first) sb.append(", ");
     sb.append("nickname:");
     if (this.nickname == null) {
       sb.append("null");
@@ -1097,6 +1163,22 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       sb.append("null");
     } else {
       sb.append(this.uid);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("real_name:");
+    if (this.real_name == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.real_name);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("avatar:");
+    if (this.avatar == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.avatar);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -1198,15 +1280,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // REAL_NAME
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.real_name = iprot.readString();
-              struct.setReal_nameIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 3: // NICKNAME
+          case 2: // NICKNAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.nickname = iprot.readString();
               struct.setNicknameIsSet(true);
@@ -1214,7 +1288,7 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // EMAIL
+          case 3: // EMAIL
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.email = iprot.readString();
               struct.setEmailIsSet(true);
@@ -1222,10 +1296,26 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // UID
+          case 4: // UID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.uid = iprot.readString();
               struct.setUidIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 11: // REAL_NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.real_name = iprot.readString();
+              struct.setReal_nameIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 12: // AVATAR
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.avatar = iprot.readString();
+              struct.setAvatarIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -1305,11 +1395,6 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       oprot.writeFieldBegin(ID_FIELD_DESC);
       oprot.writeI64(struct.id);
       oprot.writeFieldEnd();
-      if (struct.real_name != null) {
-        oprot.writeFieldBegin(REAL_NAME_FIELD_DESC);
-        oprot.writeString(struct.real_name);
-        oprot.writeFieldEnd();
-      }
       if (struct.nickname != null) {
         oprot.writeFieldBegin(NICKNAME_FIELD_DESC);
         oprot.writeString(struct.nickname);
@@ -1323,6 +1408,16 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       if (struct.uid != null) {
         oprot.writeFieldBegin(UID_FIELD_DESC);
         oprot.writeString(struct.uid);
+        oprot.writeFieldEnd();
+      }
+      if (struct.real_name != null) {
+        oprot.writeFieldBegin(REAL_NAME_FIELD_DESC);
+        oprot.writeString(struct.real_name);
+        oprot.writeFieldEnd();
+      }
+      if (struct.avatar != null) {
+        oprot.writeFieldBegin(AVATAR_FIELD_DESC);
+        oprot.writeString(struct.avatar);
         oprot.writeFieldEnd();
       }
       if (struct.current_sign_in_ip != null) {
@@ -1376,45 +1471,45 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       if (struct.isSetId()) {
         optionals.set(0);
       }
-      if (struct.isSetReal_name()) {
+      if (struct.isSetNickname()) {
         optionals.set(1);
       }
-      if (struct.isSetNickname()) {
+      if (struct.isSetEmail()) {
         optionals.set(2);
       }
-      if (struct.isSetEmail()) {
+      if (struct.isSetUid()) {
         optionals.set(3);
       }
-      if (struct.isSetUid()) {
+      if (struct.isSetReal_name()) {
         optionals.set(4);
       }
-      if (struct.isSetCurrent_sign_in_ip()) {
+      if (struct.isSetAvatar()) {
         optionals.set(5);
       }
-      if (struct.isSetCurrent_sign_in_at()) {
+      if (struct.isSetCurrent_sign_in_ip()) {
         optionals.set(6);
       }
-      if (struct.isSetLast_sign_in_ip()) {
+      if (struct.isSetCurrent_sign_in_at()) {
         optionals.set(7);
       }
-      if (struct.isSetLast_sign_in_at()) {
+      if (struct.isSetLast_sign_in_ip()) {
         optionals.set(8);
       }
-      if (struct.isSetSign_in_total()) {
+      if (struct.isSetLast_sign_in_at()) {
         optionals.set(9);
       }
-      if (struct.isSetLocale()) {
+      if (struct.isSetSign_in_total()) {
         optionals.set(10);
       }
-      if (struct.isSetTimezone()) {
+      if (struct.isSetLocale()) {
         optionals.set(11);
       }
-      oprot.writeBitSet(optionals, 12);
+      if (struct.isSetTimezone()) {
+        optionals.set(12);
+      }
+      oprot.writeBitSet(optionals, 13);
       if (struct.isSetId()) {
         oprot.writeI64(struct.id);
-      }
-      if (struct.isSetReal_name()) {
-        oprot.writeString(struct.real_name);
       }
       if (struct.isSetNickname()) {
         oprot.writeString(struct.nickname);
@@ -1424,6 +1519,12 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
       }
       if (struct.isSetUid()) {
         oprot.writeString(struct.uid);
+      }
+      if (struct.isSetReal_name()) {
+        oprot.writeString(struct.real_name);
+      }
+      if (struct.isSetAvatar()) {
+        oprot.writeString(struct.avatar);
       }
       if (struct.isSetCurrent_sign_in_ip()) {
         oprot.writeString(struct.current_sign_in_ip);
@@ -1451,52 +1552,56 @@ public class UserInfo implements org.apache.thrift.TBase<UserInfo, UserInfo._Fie
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, UserInfo struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TTupleProtocol iprot = (org.apache.thrift.protocol.TTupleProtocol) prot;
-      java.util.BitSet incoming = iprot.readBitSet(12);
+      java.util.BitSet incoming = iprot.readBitSet(13);
       if (incoming.get(0)) {
         struct.id = iprot.readI64();
         struct.setIdIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.real_name = iprot.readString();
-        struct.setReal_nameIsSet(true);
-      }
-      if (incoming.get(2)) {
         struct.nickname = iprot.readString();
         struct.setNicknameIsSet(true);
       }
-      if (incoming.get(3)) {
+      if (incoming.get(2)) {
         struct.email = iprot.readString();
         struct.setEmailIsSet(true);
       }
-      if (incoming.get(4)) {
+      if (incoming.get(3)) {
         struct.uid = iprot.readString();
         struct.setUidIsSet(true);
       }
+      if (incoming.get(4)) {
+        struct.real_name = iprot.readString();
+        struct.setReal_nameIsSet(true);
+      }
       if (incoming.get(5)) {
+        struct.avatar = iprot.readString();
+        struct.setAvatarIsSet(true);
+      }
+      if (incoming.get(6)) {
         struct.current_sign_in_ip = iprot.readString();
         struct.setCurrent_sign_in_ipIsSet(true);
       }
-      if (incoming.get(6)) {
+      if (incoming.get(7)) {
         struct.current_sign_in_at = iprot.readI64();
         struct.setCurrent_sign_in_atIsSet(true);
       }
-      if (incoming.get(7)) {
+      if (incoming.get(8)) {
         struct.last_sign_in_ip = iprot.readString();
         struct.setLast_sign_in_ipIsSet(true);
       }
-      if (incoming.get(8)) {
+      if (incoming.get(9)) {
         struct.last_sign_in_at = iprot.readI64();
         struct.setLast_sign_in_atIsSet(true);
       }
-      if (incoming.get(9)) {
+      if (incoming.get(10)) {
         struct.sign_in_total = iprot.readI64();
         struct.setSign_in_totalIsSet(true);
       }
-      if (incoming.get(10)) {
+      if (incoming.get(11)) {
         struct.locale = iprot.readString();
         struct.setLocaleIsSet(true);
       }
-      if (incoming.get(11)) {
+      if (incoming.get(12)) {
         struct.timezone = iprot.readString();
         struct.setTimezoneIsSet(true);
       }

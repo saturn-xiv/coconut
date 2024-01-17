@@ -30,16 +30,21 @@ class UserIf {
   virtual void unlock_by_token(const std::string& token) = 0;
   virtual void forgot_password(const std::string& email) = 0;
   virtual void reset_password(const std::string& token, const std::string& password) = 0;
+  virtual void set_real_name(const int64_t id, const std::string& real_name) = 0;
+  virtual void set_avatar(const int64_t id, const std::string& avatar) = 0;
+  virtual void set_locale(const int64_t id, const std::string& locale) = 0;
+  virtual void set_timezone(const int64_t id, const std::string& timezone) = 0;
+  virtual void set_password(const int64_t id, const std::string& password) = 0;
   virtual void confirm(const int64_t id) = 0;
   virtual void lock(const int64_t id) = 0;
   virtual void unlock(const int64_t id) = 0;
   virtual void enable(const int64_t id) = 0;
   virtual void disable(const int64_t id) = 0;
-  virtual void set_password(const int64_t id, const std::string& password) = 0;
   virtual void all(std::vector<UserInfo> & _return) = 0;
   virtual void by_nickname(UserInfo& _return, const std::string& nickname) = 0;
   virtual void by_email(UserInfo& _return, const std::string& email) = 0;
   virtual void by_id(UserInfo& _return, const int64_t id) = 0;
+  virtual void by_uid(UserInfo& _return, const std::string& uid) = 0;
 };
 
 class UserIfFactory {
@@ -93,6 +98,21 @@ class UserNull : virtual public UserIf {
   void reset_password(const std::string& /* token */, const std::string& /* password */) override {
     return;
   }
+  void set_real_name(const int64_t /* id */, const std::string& /* real_name */) override {
+    return;
+  }
+  void set_avatar(const int64_t /* id */, const std::string& /* avatar */) override {
+    return;
+  }
+  void set_locale(const int64_t /* id */, const std::string& /* locale */) override {
+    return;
+  }
+  void set_timezone(const int64_t /* id */, const std::string& /* timezone */) override {
+    return;
+  }
+  void set_password(const int64_t /* id */, const std::string& /* password */) override {
+    return;
+  }
   void confirm(const int64_t /* id */) override {
     return;
   }
@@ -108,9 +128,6 @@ class UserNull : virtual public UserIf {
   void disable(const int64_t /* id */) override {
     return;
   }
-  void set_password(const int64_t /* id */, const std::string& /* password */) override {
-    return;
-  }
   void all(std::vector<UserInfo> & /* _return */) override {
     return;
   }
@@ -121,6 +138,9 @@ class UserNull : virtual public UserIf {
     return;
   }
   void by_id(UserInfo& /* _return */, const int64_t /* id */) override {
+    return;
+  }
+  void by_uid(UserInfo& /* _return */, const std::string& /* uid */) override {
     return;
   }
 };
@@ -845,6 +865,481 @@ class User_reset_password_presult {
 
 };
 
+typedef struct _User_set_real_name_args__isset {
+  _User_set_real_name_args__isset() : id(false), real_name(false) {}
+  bool id :1;
+  bool real_name :1;
+} _User_set_real_name_args__isset;
+
+class User_set_real_name_args {
+ public:
+
+  User_set_real_name_args(const User_set_real_name_args&);
+  User_set_real_name_args& operator=(const User_set_real_name_args&);
+  User_set_real_name_args() noexcept
+                          : id(0),
+                            real_name() {
+  }
+
+  virtual ~User_set_real_name_args() noexcept;
+  int64_t id;
+  std::string real_name;
+
+  _User_set_real_name_args__isset __isset;
+
+  void __set_id(const int64_t val);
+
+  void __set_real_name(const std::string& val);
+
+  bool operator == (const User_set_real_name_args & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(real_name == rhs.real_name))
+      return false;
+    return true;
+  }
+  bool operator != (const User_set_real_name_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_real_name_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_real_name_pargs {
+ public:
+
+
+  virtual ~User_set_real_name_pargs() noexcept;
+  const int64_t* id;
+  const std::string* real_name;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_real_name_result {
+ public:
+
+  User_set_real_name_result(const User_set_real_name_result&) noexcept;
+  User_set_real_name_result& operator=(const User_set_real_name_result&) noexcept;
+  User_set_real_name_result() noexcept {
+  }
+
+  virtual ~User_set_real_name_result() noexcept;
+
+  bool operator == (const User_set_real_name_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const User_set_real_name_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_real_name_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_real_name_presult {
+ public:
+
+
+  virtual ~User_set_real_name_presult() noexcept;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _User_set_avatar_args__isset {
+  _User_set_avatar_args__isset() : id(false), avatar(false) {}
+  bool id :1;
+  bool avatar :1;
+} _User_set_avatar_args__isset;
+
+class User_set_avatar_args {
+ public:
+
+  User_set_avatar_args(const User_set_avatar_args&);
+  User_set_avatar_args& operator=(const User_set_avatar_args&);
+  User_set_avatar_args() noexcept
+                       : id(0),
+                         avatar() {
+  }
+
+  virtual ~User_set_avatar_args() noexcept;
+  int64_t id;
+  std::string avatar;
+
+  _User_set_avatar_args__isset __isset;
+
+  void __set_id(const int64_t val);
+
+  void __set_avatar(const std::string& val);
+
+  bool operator == (const User_set_avatar_args & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(avatar == rhs.avatar))
+      return false;
+    return true;
+  }
+  bool operator != (const User_set_avatar_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_avatar_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_avatar_pargs {
+ public:
+
+
+  virtual ~User_set_avatar_pargs() noexcept;
+  const int64_t* id;
+  const std::string* avatar;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_avatar_result {
+ public:
+
+  User_set_avatar_result(const User_set_avatar_result&) noexcept;
+  User_set_avatar_result& operator=(const User_set_avatar_result&) noexcept;
+  User_set_avatar_result() noexcept {
+  }
+
+  virtual ~User_set_avatar_result() noexcept;
+
+  bool operator == (const User_set_avatar_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const User_set_avatar_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_avatar_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_avatar_presult {
+ public:
+
+
+  virtual ~User_set_avatar_presult() noexcept;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _User_set_locale_args__isset {
+  _User_set_locale_args__isset() : id(false), locale(false) {}
+  bool id :1;
+  bool locale :1;
+} _User_set_locale_args__isset;
+
+class User_set_locale_args {
+ public:
+
+  User_set_locale_args(const User_set_locale_args&);
+  User_set_locale_args& operator=(const User_set_locale_args&);
+  User_set_locale_args() noexcept
+                       : id(0),
+                         locale() {
+  }
+
+  virtual ~User_set_locale_args() noexcept;
+  int64_t id;
+  std::string locale;
+
+  _User_set_locale_args__isset __isset;
+
+  void __set_id(const int64_t val);
+
+  void __set_locale(const std::string& val);
+
+  bool operator == (const User_set_locale_args & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(locale == rhs.locale))
+      return false;
+    return true;
+  }
+  bool operator != (const User_set_locale_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_locale_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_locale_pargs {
+ public:
+
+
+  virtual ~User_set_locale_pargs() noexcept;
+  const int64_t* id;
+  const std::string* locale;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_locale_result {
+ public:
+
+  User_set_locale_result(const User_set_locale_result&) noexcept;
+  User_set_locale_result& operator=(const User_set_locale_result&) noexcept;
+  User_set_locale_result() noexcept {
+  }
+
+  virtual ~User_set_locale_result() noexcept;
+
+  bool operator == (const User_set_locale_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const User_set_locale_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_locale_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_locale_presult {
+ public:
+
+
+  virtual ~User_set_locale_presult() noexcept;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _User_set_timezone_args__isset {
+  _User_set_timezone_args__isset() : id(false), timezone(false) {}
+  bool id :1;
+  bool timezone :1;
+} _User_set_timezone_args__isset;
+
+class User_set_timezone_args {
+ public:
+
+  User_set_timezone_args(const User_set_timezone_args&);
+  User_set_timezone_args& operator=(const User_set_timezone_args&);
+  User_set_timezone_args() noexcept
+                         : id(0),
+                           timezone() {
+  }
+
+  virtual ~User_set_timezone_args() noexcept;
+  int64_t id;
+  std::string timezone;
+
+  _User_set_timezone_args__isset __isset;
+
+  void __set_id(const int64_t val);
+
+  void __set_timezone(const std::string& val);
+
+  bool operator == (const User_set_timezone_args & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(timezone == rhs.timezone))
+      return false;
+    return true;
+  }
+  bool operator != (const User_set_timezone_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_timezone_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_timezone_pargs {
+ public:
+
+
+  virtual ~User_set_timezone_pargs() noexcept;
+  const int64_t* id;
+  const std::string* timezone;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_timezone_result {
+ public:
+
+  User_set_timezone_result(const User_set_timezone_result&) noexcept;
+  User_set_timezone_result& operator=(const User_set_timezone_result&) noexcept;
+  User_set_timezone_result() noexcept {
+  }
+
+  virtual ~User_set_timezone_result() noexcept;
+
+  bool operator == (const User_set_timezone_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const User_set_timezone_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_timezone_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_timezone_presult {
+ public:
+
+
+  virtual ~User_set_timezone_presult() noexcept;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _User_set_password_args__isset {
+  _User_set_password_args__isset() : id(false), password(false) {}
+  bool id :1;
+  bool password :1;
+} _User_set_password_args__isset;
+
+class User_set_password_args {
+ public:
+
+  User_set_password_args(const User_set_password_args&);
+  User_set_password_args& operator=(const User_set_password_args&);
+  User_set_password_args() noexcept
+                         : id(0),
+                           password() {
+  }
+
+  virtual ~User_set_password_args() noexcept;
+  int64_t id;
+  std::string password;
+
+  _User_set_password_args__isset __isset;
+
+  void __set_id(const int64_t val);
+
+  void __set_password(const std::string& val);
+
+  bool operator == (const User_set_password_args & rhs) const
+  {
+    if (!(id == rhs.id))
+      return false;
+    if (!(password == rhs.password))
+      return false;
+    return true;
+  }
+  bool operator != (const User_set_password_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_password_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_password_pargs {
+ public:
+
+
+  virtual ~User_set_password_pargs() noexcept;
+  const int64_t* id;
+  const std::string* password;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_password_result {
+ public:
+
+  User_set_password_result(const User_set_password_result&) noexcept;
+  User_set_password_result& operator=(const User_set_password_result&) noexcept;
+  User_set_password_result() noexcept {
+  }
+
+  virtual ~User_set_password_result() noexcept;
+
+  bool operator == (const User_set_password_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const User_set_password_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_set_password_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_set_password_presult {
+ public:
+
+
+  virtual ~User_set_password_presult() noexcept;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 typedef struct _User_confirm_args__isset {
   _User_confirm_args__isset() : id(false) {}
   bool id :1;
@@ -1280,101 +1775,6 @@ class User_disable_presult {
 
 };
 
-typedef struct _User_set_password_args__isset {
-  _User_set_password_args__isset() : id(false), password(false) {}
-  bool id :1;
-  bool password :1;
-} _User_set_password_args__isset;
-
-class User_set_password_args {
- public:
-
-  User_set_password_args(const User_set_password_args&);
-  User_set_password_args& operator=(const User_set_password_args&);
-  User_set_password_args() noexcept
-                         : id(0),
-                           password() {
-  }
-
-  virtual ~User_set_password_args() noexcept;
-  int64_t id;
-  std::string password;
-
-  _User_set_password_args__isset __isset;
-
-  void __set_id(const int64_t val);
-
-  void __set_password(const std::string& val);
-
-  bool operator == (const User_set_password_args & rhs) const
-  {
-    if (!(id == rhs.id))
-      return false;
-    if (!(password == rhs.password))
-      return false;
-    return true;
-  }
-  bool operator != (const User_set_password_args &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const User_set_password_args & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class User_set_password_pargs {
- public:
-
-
-  virtual ~User_set_password_pargs() noexcept;
-  const int64_t* id;
-  const std::string* password;
-
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class User_set_password_result {
- public:
-
-  User_set_password_result(const User_set_password_result&) noexcept;
-  User_set_password_result& operator=(const User_set_password_result&) noexcept;
-  User_set_password_result() noexcept {
-  }
-
-  virtual ~User_set_password_result() noexcept;
-
-  bool operator == (const User_set_password_result & /* rhs */) const
-  {
-    return true;
-  }
-  bool operator != (const User_set_password_result &rhs) const {
-    return !(*this == rhs);
-  }
-
-  bool operator < (const User_set_password_result & ) const;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
-
-};
-
-
-class User_set_password_presult {
- public:
-
-
-  virtual ~User_set_password_presult() noexcept;
-
-  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
-
-};
-
 
 class User_all_args {
  public:
@@ -1782,6 +2182,111 @@ class User_by_id_presult {
 
 };
 
+typedef struct _User_by_uid_args__isset {
+  _User_by_uid_args__isset() : uid(false) {}
+  bool uid :1;
+} _User_by_uid_args__isset;
+
+class User_by_uid_args {
+ public:
+
+  User_by_uid_args(const User_by_uid_args&);
+  User_by_uid_args& operator=(const User_by_uid_args&);
+  User_by_uid_args() noexcept
+                   : uid() {
+  }
+
+  virtual ~User_by_uid_args() noexcept;
+  std::string uid;
+
+  _User_by_uid_args__isset __isset;
+
+  void __set_uid(const std::string& val);
+
+  bool operator == (const User_by_uid_args & rhs) const
+  {
+    if (!(uid == rhs.uid))
+      return false;
+    return true;
+  }
+  bool operator != (const User_by_uid_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_by_uid_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class User_by_uid_pargs {
+ public:
+
+
+  virtual ~User_by_uid_pargs() noexcept;
+  const std::string* uid;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _User_by_uid_result__isset {
+  _User_by_uid_result__isset() : success(false) {}
+  bool success :1;
+} _User_by_uid_result__isset;
+
+class User_by_uid_result {
+ public:
+
+  User_by_uid_result(const User_by_uid_result&);
+  User_by_uid_result& operator=(const User_by_uid_result&);
+  User_by_uid_result() noexcept {
+  }
+
+  virtual ~User_by_uid_result() noexcept;
+  UserInfo success;
+
+  _User_by_uid_result__isset __isset;
+
+  void __set_success(const UserInfo& val);
+
+  bool operator == (const User_by_uid_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const User_by_uid_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const User_by_uid_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _User_by_uid_presult__isset {
+  _User_by_uid_presult__isset() : success(false) {}
+  bool success :1;
+} _User_by_uid_presult__isset;
+
+class User_by_uid_presult {
+ public:
+
+
+  virtual ~User_by_uid_presult() noexcept;
+  UserInfo* success;
+
+  _User_by_uid_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class UserClient : virtual public UserIf {
  public:
   UserClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -1831,6 +2336,21 @@ class UserClient : virtual public UserIf {
   void reset_password(const std::string& token, const std::string& password) override;
   void send_reset_password(const std::string& token, const std::string& password);
   void recv_reset_password();
+  void set_real_name(const int64_t id, const std::string& real_name) override;
+  void send_set_real_name(const int64_t id, const std::string& real_name);
+  void recv_set_real_name();
+  void set_avatar(const int64_t id, const std::string& avatar) override;
+  void send_set_avatar(const int64_t id, const std::string& avatar);
+  void recv_set_avatar();
+  void set_locale(const int64_t id, const std::string& locale) override;
+  void send_set_locale(const int64_t id, const std::string& locale);
+  void recv_set_locale();
+  void set_timezone(const int64_t id, const std::string& timezone) override;
+  void send_set_timezone(const int64_t id, const std::string& timezone);
+  void recv_set_timezone();
+  void set_password(const int64_t id, const std::string& password) override;
+  void send_set_password(const int64_t id, const std::string& password);
+  void recv_set_password();
   void confirm(const int64_t id) override;
   void send_confirm(const int64_t id);
   void recv_confirm();
@@ -1846,9 +2366,6 @@ class UserClient : virtual public UserIf {
   void disable(const int64_t id) override;
   void send_disable(const int64_t id);
   void recv_disable();
-  void set_password(const int64_t id, const std::string& password) override;
-  void send_set_password(const int64_t id, const std::string& password);
-  void recv_set_password();
   void all(std::vector<UserInfo> & _return) override;
   void send_all();
   void recv_all(std::vector<UserInfo> & _return);
@@ -1861,6 +2378,9 @@ class UserClient : virtual public UserIf {
   void by_id(UserInfo& _return, const int64_t id) override;
   void send_by_id(const int64_t id);
   void recv_by_id(UserInfo& _return);
+  void by_uid(UserInfo& _return, const std::string& uid) override;
+  void send_by_uid(const std::string& uid);
+  void recv_by_uid(UserInfo& _return);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -1884,16 +2404,21 @@ class UserProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_unlock_by_token(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_forgot_password(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_reset_password(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_set_real_name(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_set_avatar(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_set_locale(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_set_timezone(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_set_password(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_confirm(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_lock(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_unlock(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_enable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_disable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_set_password(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_all(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_by_nickname(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_by_email(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_by_id(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_by_uid(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   UserProcessor(::std::shared_ptr<UserIf> iface) :
     iface_(iface) {
@@ -1905,16 +2430,21 @@ class UserProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["unlock_by_token"] = &UserProcessor::process_unlock_by_token;
     processMap_["forgot_password"] = &UserProcessor::process_forgot_password;
     processMap_["reset_password"] = &UserProcessor::process_reset_password;
+    processMap_["set_real_name"] = &UserProcessor::process_set_real_name;
+    processMap_["set_avatar"] = &UserProcessor::process_set_avatar;
+    processMap_["set_locale"] = &UserProcessor::process_set_locale;
+    processMap_["set_timezone"] = &UserProcessor::process_set_timezone;
+    processMap_["set_password"] = &UserProcessor::process_set_password;
     processMap_["confirm"] = &UserProcessor::process_confirm;
     processMap_["lock"] = &UserProcessor::process_lock;
     processMap_["unlock"] = &UserProcessor::process_unlock;
     processMap_["enable"] = &UserProcessor::process_enable;
     processMap_["disable"] = &UserProcessor::process_disable;
-    processMap_["set_password"] = &UserProcessor::process_set_password;
     processMap_["all"] = &UserProcessor::process_all;
     processMap_["by_nickname"] = &UserProcessor::process_by_nickname;
     processMap_["by_email"] = &UserProcessor::process_by_email;
     processMap_["by_id"] = &UserProcessor::process_by_id;
+    processMap_["by_uid"] = &UserProcessor::process_by_uid;
   }
 
   virtual ~UserProcessor() {}
@@ -2016,6 +2546,51 @@ class UserMultiface : virtual public UserIf {
     ifaces_[i]->reset_password(token, password);
   }
 
+  void set_real_name(const int64_t id, const std::string& real_name) override {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->set_real_name(id, real_name);
+    }
+    ifaces_[i]->set_real_name(id, real_name);
+  }
+
+  void set_avatar(const int64_t id, const std::string& avatar) override {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->set_avatar(id, avatar);
+    }
+    ifaces_[i]->set_avatar(id, avatar);
+  }
+
+  void set_locale(const int64_t id, const std::string& locale) override {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->set_locale(id, locale);
+    }
+    ifaces_[i]->set_locale(id, locale);
+  }
+
+  void set_timezone(const int64_t id, const std::string& timezone) override {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->set_timezone(id, timezone);
+    }
+    ifaces_[i]->set_timezone(id, timezone);
+  }
+
+  void set_password(const int64_t id, const std::string& password) override {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->set_password(id, password);
+    }
+    ifaces_[i]->set_password(id, password);
+  }
+
   void confirm(const int64_t id) override {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -2061,15 +2636,6 @@ class UserMultiface : virtual public UserIf {
     ifaces_[i]->disable(id);
   }
 
-  void set_password(const int64_t id, const std::string& password) override {
-    size_t sz = ifaces_.size();
-    size_t i = 0;
-    for (; i < (sz - 1); ++i) {
-      ifaces_[i]->set_password(id, password);
-    }
-    ifaces_[i]->set_password(id, password);
-  }
-
   void all(std::vector<UserInfo> & _return) override {
     size_t sz = ifaces_.size();
     size_t i = 0;
@@ -2107,6 +2673,16 @@ class UserMultiface : virtual public UserIf {
       ifaces_[i]->by_id(_return, id);
     }
     ifaces_[i]->by_id(_return, id);
+    return;
+  }
+
+  void by_uid(UserInfo& _return, const std::string& uid) override {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->by_uid(_return, uid);
+    }
+    ifaces_[i]->by_uid(_return, uid);
     return;
   }
 
@@ -2166,6 +2742,21 @@ class UserConcurrentClient : virtual public UserIf {
   void reset_password(const std::string& token, const std::string& password) override;
   int32_t send_reset_password(const std::string& token, const std::string& password);
   void recv_reset_password(const int32_t seqid);
+  void set_real_name(const int64_t id, const std::string& real_name) override;
+  int32_t send_set_real_name(const int64_t id, const std::string& real_name);
+  void recv_set_real_name(const int32_t seqid);
+  void set_avatar(const int64_t id, const std::string& avatar) override;
+  int32_t send_set_avatar(const int64_t id, const std::string& avatar);
+  void recv_set_avatar(const int32_t seqid);
+  void set_locale(const int64_t id, const std::string& locale) override;
+  int32_t send_set_locale(const int64_t id, const std::string& locale);
+  void recv_set_locale(const int32_t seqid);
+  void set_timezone(const int64_t id, const std::string& timezone) override;
+  int32_t send_set_timezone(const int64_t id, const std::string& timezone);
+  void recv_set_timezone(const int32_t seqid);
+  void set_password(const int64_t id, const std::string& password) override;
+  int32_t send_set_password(const int64_t id, const std::string& password);
+  void recv_set_password(const int32_t seqid);
   void confirm(const int64_t id) override;
   int32_t send_confirm(const int64_t id);
   void recv_confirm(const int32_t seqid);
@@ -2181,9 +2772,6 @@ class UserConcurrentClient : virtual public UserIf {
   void disable(const int64_t id) override;
   int32_t send_disable(const int64_t id);
   void recv_disable(const int32_t seqid);
-  void set_password(const int64_t id, const std::string& password) override;
-  int32_t send_set_password(const int64_t id, const std::string& password);
-  void recv_set_password(const int32_t seqid);
   void all(std::vector<UserInfo> & _return) override;
   int32_t send_all();
   void recv_all(std::vector<UserInfo> & _return, const int32_t seqid);
@@ -2196,6 +2784,9 @@ class UserConcurrentClient : virtual public UserIf {
   void by_id(UserInfo& _return, const int64_t id) override;
   int32_t send_by_id(const int64_t id);
   void recv_by_id(UserInfo& _return, const int32_t seqid);
+  void by_uid(UserInfo& _return, const std::string& uid) override;
+  int32_t send_by_uid(const std::string& uid);
+  void recv_by_uid(UserInfo& _return, const int32_t seqid);
  protected:
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   std::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

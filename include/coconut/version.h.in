@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 // clang-format off
 namespace coconut {
 
