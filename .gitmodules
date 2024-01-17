@@ -1,0 +1,3 @@
+[submodule "vendors/casbin-cpp"]
+	path = vendors/casbin-cpp
+	url = https://github.com/casbin/casbin-cpp.git
