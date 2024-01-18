@@ -36,15 +36,10 @@
 #include <toml++/toml.h>
 
 #include <hiredis/hiredis.h>
+#include <spdlog/spdlog.h>
 #include <sw/redis++/redis++.h>
 #include <inja/inja.hpp>
 #include <pqxx/pqxx>
-
-// deprecated: Since OpenSSL 3.0
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-#include <tink/internal/ssl_unique_ptr.h>
-#pragma GCC diagnostic pop
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -60,6 +55,16 @@ class Redis {};
 
 class Smtp {};
 
+struct Ssl {
+  Ssl(const std::string& cert_file, const std::string& key_file,
+      const std::string& ca_file)
+      : cert_file(cert_file), key_file(key_file), ca_file(ca_file) {}
+
+  std::string cert_file;
+  std::string key_file;
+  std::string ca_file;
+};
+
 class Config {
  private:
   PostgreSql postgresql;
@@ -67,4 +72,5 @@ class Config {
   Redis redis;
   Smtp smtp;
 };
+
 }  // namespace coconut

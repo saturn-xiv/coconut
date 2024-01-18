@@ -30,6 +30,7 @@
     "boost-random",
     "boost-program-options",
     "boost-locale",
+    "boost-uuid",
     "boost-test"
   ]
 }

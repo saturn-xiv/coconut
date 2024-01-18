@@ -89,6 +89,9 @@ service User {
     void set_timezone(1:i64 id, 2:string timezone);
     void set_password(1:i64 id, 2:string password);
 
+    void set_(1:i64 id, 2:string key, 3:binary value);
+    binary get_(1:i64 id, 2:string key);
+
     void confirm(1:i64 id);
     void lock(1:i64 id);
     void unlock(1:i64 id);
