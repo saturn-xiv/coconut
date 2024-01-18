@@ -1,0 +1,26 @@
+{
+  "name": "coconut",
+  "version": "2024.1.18",
+  "dependencies": [
+    "openssl",
+    {
+      "name": "libevent",
+      "features": ["openssl", "thread"]
+    },
+    "librabbitmq",
+    { "name": "cpr", "features": ["ssl"] },
+    "cppcodec",
+    "tomlplusplus",
+    "msgpack-c",
+    { "name": "nlohmann-json", "features": ["diagnostics"] },
+    "inja",
+    "cpp-httplib",
+    { "name": "libpq", "features": ["nls", "zlib"] },
+    "libpqxx",
+    "hiredis",
+    { "name": "redis-plus-plus", "features": ["cxx17"] },
+    "spdlog",
+    "argparse",
+    "mailio"
+  ]
+}

@@ -10,15 +10,13 @@ function build_coconut() {
     local arch=$(uname -p)
 
     echo "build coconut with gcc-$1($arch)"
-    apt install -y cmake g++-$1 golang libunwind-dev libboost-all-dev \
-        libssl-dev libpq-dev libevent-dev
+    apt install -y cmake g++-$1 golang linux-libc-dev
 
     local build_root=$WORKSPACE/build/$arch-Release
 
     mkdir -p $build_root
     CC=gcc-$1 CXX=g++-$1 cmake -DCMAKE_BUILD_TYPE=Release \
-        -DBUILD_SHARED_LIBS=OFF -DDISABLE_TESTS=ON \
-        -DREDIS_PLUS_PLUS_BUILD_SHARED=OFF -DREDIS_PLUS_PLUS_BUILD_TEST=OFF \
+        -DCMAKE_TOOLCHAIN_FILE=$WORKSPACE/vendors/vcpkg/scripts/buildsystems/vcpkg.cmake \
         -DABSL_PROPAGATE_CXX_STD=ON -DTINK_USE_SYSTEM_OPENSSL=ON \
         -DBUILD_COMPILER=OFF -DWITH_OPENSSL=ON -DWITH_QT5=OFF -DBUILD_C_GLIB=OFF -DBUILD_JAVA=OFF -DBUILD_JAVASCRIPT=OFF -DBUILD_NODEJS=OFF -DBUILD_PYTHON=OFF \
         -B $build_root -S $WORKSPACE

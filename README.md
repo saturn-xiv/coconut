@@ -8,6 +8,7 @@ A flexible authentication solution by CPP.
 # clone source code
 $ git clone --recurse-submodules https://github.com/saturn-xiv/coconut.git
 $ cd coconut
+$ ./vendors/vcpkg/bootstrap-vcpkg.sh
 # building
 $ ./scripts/build.sh
 ```
