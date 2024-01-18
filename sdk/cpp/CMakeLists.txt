@@ -19,7 +19,7 @@ target_link_libraries(gourd PRIVATE
   thrift thriftnb thriftz
 )
 
-target_include_directories(gourd PRIVATE
+target_include_directories(gourd PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   
   ${thrift_SOURCE_DIR}/lib/cpp/src
