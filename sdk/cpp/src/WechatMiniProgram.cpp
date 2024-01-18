@@ -4,11 +4,11 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "Oauth2.h"
+#include "WechatMiniProgram.h"
 
-namespace coconut { namespace wechat { namespace oauth2 { namespace v1 {
+namespace coconut { namespace v1 {
 
-bool Oauth2Processor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
+bool WechatMiniProgramProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
   ProcessMap::iterator pfn;
   pfn = processMap_.find(fname);
   if (pfn == processMap_.end()) {
@@ -27,12 +27,12 @@ bool Oauth2Processor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot,
   return true;
 }
 
-::std::shared_ptr< ::apache::thrift::TProcessor > Oauth2ProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
-  ::apache::thrift::ReleaseHandler< Oauth2IfFactory > cleanup(handlerFactory_);
-  ::std::shared_ptr< Oauth2If > handler(handlerFactory_->getHandler(connInfo), cleanup);
-  ::std::shared_ptr< ::apache::thrift::TProcessor > processor(new Oauth2Processor(handler));
+::std::shared_ptr< ::apache::thrift::TProcessor > WechatMiniProgramProcessorFactory::getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) {
+  ::apache::thrift::ReleaseHandler< WechatMiniProgramIfFactory > cleanup(handlerFactory_);
+  ::std::shared_ptr< WechatMiniProgramIf > handler(handlerFactory_->getHandler(connInfo), cleanup);
+  ::std::shared_ptr< ::apache::thrift::TProcessor > processor(new WechatMiniProgramProcessor(handler));
   return processor;
 }
 
-}}}} // namespace
+}} // namespace
 

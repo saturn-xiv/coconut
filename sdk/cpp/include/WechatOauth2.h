@@ -4,61 +4,61 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef Oauth2_H
-#define Oauth2_H
+#ifndef WechatOauth2_H
+#define WechatOauth2_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include <memory>
 #include "wechat_oauth2_types.h"
 
-namespace coconut { namespace wechat { namespace oauth2 { namespace v1 {
+namespace coconut { namespace v1 {
 
 #ifdef _MSC_VER
   #pragma warning( push )
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class Oauth2If {
+class WechatOauth2If {
  public:
-  virtual ~Oauth2If() {}
+  virtual ~WechatOauth2If() {}
 };
 
-class Oauth2IfFactory {
+class WechatOauth2IfFactory {
  public:
-  typedef Oauth2If Handler;
+  typedef WechatOauth2If Handler;
 
-  virtual ~Oauth2IfFactory() {}
+  virtual ~WechatOauth2IfFactory() {}
 
-  virtual Oauth2If* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(Oauth2If* /* handler */) = 0;
+  virtual WechatOauth2If* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(WechatOauth2If* /* handler */) = 0;
   };
 
-class Oauth2IfSingletonFactory : virtual public Oauth2IfFactory {
+class WechatOauth2IfSingletonFactory : virtual public WechatOauth2IfFactory {
  public:
-  Oauth2IfSingletonFactory(const ::std::shared_ptr<Oauth2If>& iface) : iface_(iface) {}
-  virtual ~Oauth2IfSingletonFactory() {}
+  WechatOauth2IfSingletonFactory(const ::std::shared_ptr<WechatOauth2If>& iface) : iface_(iface) {}
+  virtual ~WechatOauth2IfSingletonFactory() {}
 
-  virtual Oauth2If* getHandler(const ::apache::thrift::TConnectionInfo&) override {
+  virtual WechatOauth2If* getHandler(const ::apache::thrift::TConnectionInfo&) override {
     return iface_.get();
   }
-  virtual void releaseHandler(Oauth2If* /* handler */) override {}
+  virtual void releaseHandler(WechatOauth2If* /* handler */) override {}
 
  protected:
-  ::std::shared_ptr<Oauth2If> iface_;
+  ::std::shared_ptr<WechatOauth2If> iface_;
 };
 
-class Oauth2Null : virtual public Oauth2If {
+class WechatOauth2Null : virtual public WechatOauth2If {
  public:
-  virtual ~Oauth2Null() {}
+  virtual ~WechatOauth2Null() {}
 };
 
-class Oauth2Client : virtual public Oauth2If {
+class WechatOauth2Client : virtual public WechatOauth2If {
  public:
-  Oauth2Client(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  WechatOauth2Client(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  Oauth2Client(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  WechatOauth2Client(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -85,42 +85,42 @@ class Oauth2Client : virtual public Oauth2If {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class Oauth2Processor : public ::apache::thrift::TDispatchProcessor {
+class WechatOauth2Processor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  ::std::shared_ptr<Oauth2If> iface_;
+  ::std::shared_ptr<WechatOauth2If> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) override;
  private:
-  typedef  void (Oauth2Processor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (WechatOauth2Processor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
  public:
-  Oauth2Processor(::std::shared_ptr<Oauth2If> iface) :
+  WechatOauth2Processor(::std::shared_ptr<WechatOauth2If> iface) :
     iface_(iface) {
   }
 
-  virtual ~Oauth2Processor() {}
+  virtual ~WechatOauth2Processor() {}
 };
 
-class Oauth2ProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class WechatOauth2ProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  Oauth2ProcessorFactory(const ::std::shared_ptr< Oauth2IfFactory >& handlerFactory) noexcept :
+  WechatOauth2ProcessorFactory(const ::std::shared_ptr< WechatOauth2IfFactory >& handlerFactory) noexcept :
       handlerFactory_(handlerFactory) {}
 
   ::std::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) override;
 
  protected:
-  ::std::shared_ptr< Oauth2IfFactory > handlerFactory_;
+  ::std::shared_ptr< WechatOauth2IfFactory > handlerFactory_;
 };
 
-class Oauth2Multiface : virtual public Oauth2If {
+class WechatOauth2Multiface : virtual public WechatOauth2If {
  public:
-  Oauth2Multiface(std::vector<std::shared_ptr<Oauth2If> >& ifaces) : ifaces_(ifaces) {
+  WechatOauth2Multiface(std::vector<std::shared_ptr<WechatOauth2If> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~Oauth2Multiface() {}
+  virtual ~WechatOauth2Multiface() {}
  protected:
-  std::vector<std::shared_ptr<Oauth2If> > ifaces_;
-  Oauth2Multiface() {}
-  void add(::std::shared_ptr<Oauth2If> iface) {
+  std::vector<std::shared_ptr<WechatOauth2If> > ifaces_;
+  WechatOauth2Multiface() {}
+  void add(::std::shared_ptr<WechatOauth2If> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -129,13 +129,13 @@ class Oauth2Multiface : virtual public Oauth2If {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class Oauth2ConcurrentClient : virtual public Oauth2If {
+class WechatOauth2ConcurrentClient : virtual public WechatOauth2If {
  public:
-  Oauth2ConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
+  WechatOauth2ConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
 {
     setProtocol(prot);
   }
-  Oauth2ConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
+  WechatOauth2ConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
 {
     setProtocol(iprot,oprot);
   }
@@ -168,6 +168,6 @@ class Oauth2ConcurrentClient : virtual public Oauth2If {
   #pragma warning( pop )
 #endif
 
-}}}} // namespace
+}} // namespace
 
 #endif

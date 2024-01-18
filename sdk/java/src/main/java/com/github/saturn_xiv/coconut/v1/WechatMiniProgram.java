@@ -4,10 +4,10 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.github.saturn_xiv.coconut.wechat.mini_program.v1;
+package com.github.saturn_xiv.coconut.v1;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked", "unused"})
-public class MiniProgram {
+public class WechatMiniProgram {
 
   public interface Iface {
 

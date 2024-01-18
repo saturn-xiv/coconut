@@ -12,7 +12,7 @@
 #include <memory>
 #include "monitor_types.h"
 
-namespace coconut { namespace monitor { namespace v1 {
+namespace coconut { namespace v1 {
 
 #ifdef _MSC_VER
   #pragma warning( push )
@@ -378,6 +378,6 @@ class HealthConcurrentClient : virtual public HealthIf {
   #pragma warning( pop )
 #endif
 
-}}} // namespace
+}} // namespace
 
 #endif

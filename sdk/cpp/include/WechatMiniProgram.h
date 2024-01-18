@@ -4,61 +4,61 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef MiniProgram_H
-#define MiniProgram_H
+#ifndef WechatMiniProgram_H
+#define WechatMiniProgram_H
 
 #include <thrift/TDispatchProcessor.h>
 #include <thrift/async/TConcurrentClientSyncInfo.h>
 #include <memory>
 #include "wechat_mini_program_types.h"
 
-namespace coconut { namespace wechat { namespace mini_program { namespace v1 {
+namespace coconut { namespace v1 {
 
 #ifdef _MSC_VER
   #pragma warning( push )
   #pragma warning (disable : 4250 ) //inheriting methods via dominance 
 #endif
 
-class MiniProgramIf {
+class WechatMiniProgramIf {
  public:
-  virtual ~MiniProgramIf() {}
+  virtual ~WechatMiniProgramIf() {}
 };
 
-class MiniProgramIfFactory {
+class WechatMiniProgramIfFactory {
  public:
-  typedef MiniProgramIf Handler;
+  typedef WechatMiniProgramIf Handler;
 
-  virtual ~MiniProgramIfFactory() {}
+  virtual ~WechatMiniProgramIfFactory() {}
 
-  virtual MiniProgramIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
-  virtual void releaseHandler(MiniProgramIf* /* handler */) = 0;
+  virtual WechatMiniProgramIf* getHandler(const ::apache::thrift::TConnectionInfo& connInfo) = 0;
+  virtual void releaseHandler(WechatMiniProgramIf* /* handler */) = 0;
   };
 
-class MiniProgramIfSingletonFactory : virtual public MiniProgramIfFactory {
+class WechatMiniProgramIfSingletonFactory : virtual public WechatMiniProgramIfFactory {
  public:
-  MiniProgramIfSingletonFactory(const ::std::shared_ptr<MiniProgramIf>& iface) : iface_(iface) {}
-  virtual ~MiniProgramIfSingletonFactory() {}
+  WechatMiniProgramIfSingletonFactory(const ::std::shared_ptr<WechatMiniProgramIf>& iface) : iface_(iface) {}
+  virtual ~WechatMiniProgramIfSingletonFactory() {}
 
-  virtual MiniProgramIf* getHandler(const ::apache::thrift::TConnectionInfo&) override {
+  virtual WechatMiniProgramIf* getHandler(const ::apache::thrift::TConnectionInfo&) override {
     return iface_.get();
   }
-  virtual void releaseHandler(MiniProgramIf* /* handler */) override {}
+  virtual void releaseHandler(WechatMiniProgramIf* /* handler */) override {}
 
  protected:
-  ::std::shared_ptr<MiniProgramIf> iface_;
+  ::std::shared_ptr<WechatMiniProgramIf> iface_;
 };
 
-class MiniProgramNull : virtual public MiniProgramIf {
+class WechatMiniProgramNull : virtual public WechatMiniProgramIf {
  public:
-  virtual ~MiniProgramNull() {}
+  virtual ~WechatMiniProgramNull() {}
 };
 
-class MiniProgramClient : virtual public MiniProgramIf {
+class WechatMiniProgramClient : virtual public WechatMiniProgramIf {
  public:
-  MiniProgramClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
+  WechatMiniProgramClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
     setProtocol(prot);
   }
-  MiniProgramClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
+  WechatMiniProgramClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot) {
     setProtocol(iprot,oprot);
   }
  private:
@@ -85,42 +85,42 @@ class MiniProgramClient : virtual public MiniProgramIf {
   ::apache::thrift::protocol::TProtocol* oprot_;
 };
 
-class MiniProgramProcessor : public ::apache::thrift::TDispatchProcessor {
+class WechatMiniProgramProcessor : public ::apache::thrift::TDispatchProcessor {
  protected:
-  ::std::shared_ptr<MiniProgramIf> iface_;
+  ::std::shared_ptr<WechatMiniProgramIf> iface_;
   virtual bool dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) override;
  private:
-  typedef  void (MiniProgramProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
+  typedef  void (WechatMiniProgramProcessor::*ProcessFunction)(int32_t, ::apache::thrift::protocol::TProtocol*, ::apache::thrift::protocol::TProtocol*, void*);
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
  public:
-  MiniProgramProcessor(::std::shared_ptr<MiniProgramIf> iface) :
+  WechatMiniProgramProcessor(::std::shared_ptr<WechatMiniProgramIf> iface) :
     iface_(iface) {
   }
 
-  virtual ~MiniProgramProcessor() {}
+  virtual ~WechatMiniProgramProcessor() {}
 };
 
-class MiniProgramProcessorFactory : public ::apache::thrift::TProcessorFactory {
+class WechatMiniProgramProcessorFactory : public ::apache::thrift::TProcessorFactory {
  public:
-  MiniProgramProcessorFactory(const ::std::shared_ptr< MiniProgramIfFactory >& handlerFactory) noexcept :
+  WechatMiniProgramProcessorFactory(const ::std::shared_ptr< WechatMiniProgramIfFactory >& handlerFactory) noexcept :
       handlerFactory_(handlerFactory) {}
 
   ::std::shared_ptr< ::apache::thrift::TProcessor > getProcessor(const ::apache::thrift::TConnectionInfo& connInfo) override;
 
  protected:
-  ::std::shared_ptr< MiniProgramIfFactory > handlerFactory_;
+  ::std::shared_ptr< WechatMiniProgramIfFactory > handlerFactory_;
 };
 
-class MiniProgramMultiface : virtual public MiniProgramIf {
+class WechatMiniProgramMultiface : virtual public WechatMiniProgramIf {
  public:
-  MiniProgramMultiface(std::vector<std::shared_ptr<MiniProgramIf> >& ifaces) : ifaces_(ifaces) {
+  WechatMiniProgramMultiface(std::vector<std::shared_ptr<WechatMiniProgramIf> >& ifaces) : ifaces_(ifaces) {
   }
-  virtual ~MiniProgramMultiface() {}
+  virtual ~WechatMiniProgramMultiface() {}
  protected:
-  std::vector<std::shared_ptr<MiniProgramIf> > ifaces_;
-  MiniProgramMultiface() {}
-  void add(::std::shared_ptr<MiniProgramIf> iface) {
+  std::vector<std::shared_ptr<WechatMiniProgramIf> > ifaces_;
+  WechatMiniProgramMultiface() {}
+  void add(::std::shared_ptr<WechatMiniProgramIf> iface) {
     ifaces_.push_back(iface);
   }
  public:
@@ -129,13 +129,13 @@ class MiniProgramMultiface : virtual public MiniProgramIf {
 // The 'concurrent' client is a thread safe client that correctly handles
 // out of order responses.  It is slower than the regular client, so should
 // only be used when you need to share a connection among multiple threads
-class MiniProgramConcurrentClient : virtual public MiniProgramIf {
+class WechatMiniProgramConcurrentClient : virtual public WechatMiniProgramIf {
  public:
-  MiniProgramConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
+  WechatMiniProgramConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> prot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
 {
     setProtocol(prot);
   }
-  MiniProgramConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
+  WechatMiniProgramConcurrentClient(std::shared_ptr< ::apache::thrift::protocol::TProtocol> iprot, std::shared_ptr< ::apache::thrift::protocol::TProtocol> oprot, std::shared_ptr< ::apache::thrift::async::TConcurrentClientSyncInfo> sync) : sync_(sync)
 {
     setProtocol(iprot,oprot);
   }
@@ -168,6 +168,6 @@ class MiniProgramConcurrentClient : virtual public MiniProgramIf {
   #pragma warning( pop )
 #endif
 
-}}}} // namespace
+}} // namespace
 
 #endif

@@ -19,8 +19,8 @@
 #include <memory>
 
 
-namespace coconut { namespace wechat { namespace mini_program { namespace v1 {
+namespace coconut { namespace v1 {
 
-}}}} // namespace
+}} // namespace
 
 #endif

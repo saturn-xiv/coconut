@@ -1,6 +1,6 @@
-namespace cpp coconut.wechat.mini_program.v1
-namespace java com.github.saturn_xiv.coconut.wechat.mini_program.v1
+namespace cpp coconut.v1
+namespace java com.github.saturn_xiv.coconut.v1
 
-service MiniProgram {
+service WechatMiniProgram {
     
 }

@@ -1,5 +1,5 @@
-namespace cpp coconut.monitor.v1
-namespace java com.github.saturn_xiv.coconut.monitor.v1
+namespace cpp coconut.v1
+namespace java com.github.saturn_xiv.coconut.v1
 
 service Health {
     void check();

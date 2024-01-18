@@ -7,6 +7,7 @@ export PROTOCOLS_DIR=$WORKSPACE/protocols
 
 declare -a THRIFT_PROTOCOLS=(
     "auth"
+    "crypto"
     "monitor"
 
     "google_oauth2"

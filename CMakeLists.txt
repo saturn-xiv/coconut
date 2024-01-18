@@ -30,6 +30,12 @@ find_package(PostgreSQL REQUIRED)
 
 # --------------------------------------------------------
 
+FetchContent_Declare(hiredis
+  GIT_REPOSITORY    "https://github.com/redis/hiredis.git"
+  GIT_TAG           "v1.2.0"
+)
+FetchContent_MakeAvailable(hiredis)
+
 FetchContent_Declare(spdlog
   GIT_REPOSITORY  "https://github.com/gabime/spdlog.git"
   GIT_TAG         "v1.12.0"
@@ -58,7 +64,12 @@ FetchContent_Declare(pqxx
   GIT_REPOSITORY    "https://github.com/jtv/libpqxx.git"
   GIT_TAG           "7.8.1"
 )
-FetchContent_MakeAvailable(pqxx spdlog argparse tomlplusplus inja httplib tink)
+
+FetchContent_Declare(redis_plus_plus
+  GIT_REPOSITORY    "https://github.com/sewenew/redis-plus-plus.git"
+  GIT_TAG           "1.3.11"
+)
+FetchContent_MakeAvailable(pqxx redis_plus_plus spdlog argparse tomlplusplus inja httplib tink)
 
 # --------------------------------------------------------
 
@@ -67,13 +78,14 @@ add_subdirectory(sdk/cpp)
 # --------------------------------------------------------
 
 file(GLOB SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/src/*.cpp")
-file(GLOB GOURD_SOURCE_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/sdk/cpp/src/*.cpp")
 
-add_executable(coconut ${GOURD_SOURCE_LIST} ${SOURCE_LIST})
+add_executable(coconut ${SOURCE_LIST})
 set_target_properties(coconut PROPERTIES LINK_FLAGS_RELEASE -s)
 
 target_link_libraries(coconut gourd
-  ${OPENSSL_LIBRARIES} ${PostgreSQL_LIBRARIES}
+  ${OPENSSL_LIBRARIES}
+  ${PostgreSQL_LIBRARIES} pqxx
+  hiredis::hiredis_static redis++_static
 
   tink::static
   tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config tink::jwt::jwt_signature_config
@@ -81,11 +93,16 @@ target_link_libraries(coconut gourd
 
 target_include_directories(coconut PUBLIC
   ${PROJECT_SOURCE_DIR}/include
-  ${PROJECT_SOURCE_DIR}/sdk/cpp/include
-    
+      
   ${spdlog_SOURCE_DIR}/include
   ${argparse_SOURCE_DIR}/include
   ${tomlplusplus_SOURCE_DIR}/include
+  ${pqxx_SOURCE_DIR}/include
+  ${hiredis_SOURCE_DIR}
+  ${redis_plus_plus_SOURCE_DIR}/src
+
+  ${inja_SOURCE_DIR}/include
+  ${inja_SOURCE_DIR}/third_party/include
 
 )
 

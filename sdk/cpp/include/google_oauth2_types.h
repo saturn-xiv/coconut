@@ -19,8 +19,8 @@
 #include <memory>
 
 
-namespace coconut { namespace google { namespace oauth2 { namespace v1 {
+namespace coconut { namespace v1 {
 
-}}}} // namespace
+}} // namespace
 
 #endif
