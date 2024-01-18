@@ -40,6 +40,7 @@ find_package(argparse CONFIG REQUIRED)
 find_package(mailio CONFIG REQUIRED)
 find_package(CURL REQUIRED)
 find_package(cpr CONFIG REQUIRED)
+find_package(Boost REQUIRED COMPONENTS locale)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(tomlplusplus REQUIRED IMPORTED_TARGET tomlplusplus)
@@ -68,7 +69,8 @@ set_target_properties(coconut PROPERTIES LINK_FLAGS_RELEASE -s)
 target_link_libraries(coconut PRIVATE 
   gourd  
 
-  OpenSSL::SSL OpenSSL::Crypto 
+  OpenSSL::SSL OpenSSL::Crypto
+  Boost::locale
   PostgreSQL::PostgreSQL libpqxx::pqxx
   hiredis::hiredis redis++::redis++_static
   rabbitmq::rabbitmq-static

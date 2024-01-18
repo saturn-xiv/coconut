@@ -5,6 +5,9 @@ A flexible authentication solution by CPP.
 ## Usage
 
 ```bash
+# use gcc-12
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 150
+$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 150
 # clone source code
 $ git clone --recurse-submodules https://github.com/saturn-xiv/coconut.git
 $ cd coconut

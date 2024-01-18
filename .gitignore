@@ -1,4 +1,5 @@
 /include/coconut/version.hpp
 
 /build/
+/tmp/
 /config.toml
