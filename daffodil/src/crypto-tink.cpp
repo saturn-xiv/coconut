@@ -1,9 +1,5 @@
 #include "coconut/crypto.hpp"
-
-#include <boost/lexical_cast.hpp>
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
+#include "coconut/utils.hpp"
 
 #include <tink/aead.h>
 #include <tink/aead/aead_config.h>
@@ -188,23 +184,4 @@ std::unique_ptr<crypto::tink::KeysetHandle> coconut::Keyset::load(
     std::filesystem::permissions(file, std::filesystem::perms::owner_read);
     return keyset_handler;
   }
-}
-
-std::string coconut::random(const size_t len) {
-  std::random_device rd;
-  std::mt19937 mt(rd());
-  std::uniform_int_distribution<uint8_t> dist(0, 255);
-
-  std::vector<uint8_t> buf;
-  auto gen = std::bind(dist, mt);
-  buf.resize(len);
-  std::generate(buf.begin(), buf.end(), gen);
-
-  std::string str(buf.begin(), buf.end());
-  return str;
-}
-
-std::string coconut::uuid() {
-  boost::uuids::uuid it = boost::uuids::random_generator()();
-  return boost::lexical_cast<std::string>(it);
 }

@@ -7,4 +7,5 @@ foreach(sfn ${APP_SOURCES})
 
     target_link_libraries(${it} PRIVATE daffodil)
     set_target_properties(${it} PROPERTIES LINK_FLAGS_RELEASE -s)
+
 endforeach(sfn ${APP_SOURCES})

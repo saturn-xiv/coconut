@@ -7,6 +7,7 @@
 #include "coconut/sms.hpp"
 
 namespace coconut {
+namespace orchid {
 namespace application {
 
 class Config {
@@ -17,6 +18,7 @@ class Config {
   Smtp smtp;
 };
 
-void launch(const uint16_t port, std::optional<coconut::Ssl> ssl);
+void rpc(const uint16_t port, std::optional<coconut::Ssl> ssl);
 };  // namespace application
+}  // namespace orchid
 }  // namespace coconut

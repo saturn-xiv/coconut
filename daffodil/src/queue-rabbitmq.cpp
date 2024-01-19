@@ -1,4 +1,5 @@
 #include "coconut/queue.hpp"
+#include "coconut/utils.hpp"
 
 #include <magic_enum.hpp>
 

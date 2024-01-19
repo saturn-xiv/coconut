@@ -1,6 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "palm/email.hpp"
+#include "coconut/email.hpp"
 
 #include <filesystem>
 #include <fstream>
@@ -10,12 +10,12 @@ TEST_CASE("Send email", "[smtp]") {
   auto config = toml::parse_file("config.toml");
 
   auto node = config["smtp"].as_table();
-  const palm::smtp::Config cfg(*node);
+  const coconut::smtp::Config cfg(*node);
   std::cout << "connect " << cfg << std::endl;
 
-  //   palm::smtp::Address to = {.username = std::getenv("SMTP_TO_USERNAME"),
+  //   coconut::smtp::Address to = {.username = std::getenv("SMTP_TO_USERNAME"),
   //                             .email = "SMTP_TO_EMAIL"};
-  palm::smtp::Address to;
+  coconut::smtp::Address to;
   {
     to.username = std::getenv("SMTP_TO_USERNAME");
     to.email = std::getenv("SMTP_TO_EMAIL");

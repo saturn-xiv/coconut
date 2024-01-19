@@ -1,27 +1,27 @@
 #include <catch2/catch_test_macros.hpp>
 
-#include "palm/orm.hpp"
-#include "palm/utils.hpp"
+#include "coconut/orm.hpp"
+#include "coconut/utils.hpp"
 
 #include <iostream>
 
 TEST_CASE("PostgreSQL", "[postgresql]") {
   auto config = toml::parse_file("config.toml");
   auto node = config["postgresql"].as_table();
-  palm::postgresql::Config cfg(*node);
+  coconut::postgresql::Config cfg(*node);
   std::cout << "connect " << cfg << std::endl;
 
   auto pool = cfg.open();
   const auto max_size = pool->idle_size();
 
   {
-    palm::postgresql::PooledConnection con(pool);
+    coconut::postgresql::PooledConnection con(pool);
 
     REQUIRE(pool->idle_size() == max_size - 1);
     SECTION("ping") {
       const auto size = pool->idle_size();
       REQUIRE(size > 0);
-      palm::postgresql::PooledConnection con(pool);
+      coconut::postgresql::PooledConnection con(pool);
       REQUIRE(size < max_size);
       pqxx::work tx{*con.db};
       auto row = tx.exec1("SELECT 1");
@@ -38,7 +38,7 @@ TEST_CASE("PostgreSQL", "[postgresql]") {
 
         const auto ts = r[0].as<std::string>();
         //   const auto tp = r[0].as<std::chrono::system_clock::time_point>();
-        const auto tp = palm::to_time_point(ts);
+        const auto tp = coconut::to_time_point(ts);
         std::cout << ts
 #if _GLIBCXX_RELEASE > 12
                   << "\t" << tp

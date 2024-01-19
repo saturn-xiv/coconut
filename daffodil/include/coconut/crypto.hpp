@@ -83,7 +83,5 @@ class Aes final : public Keyset {
   std::unique_ptr<crypto::tink::Aead> load();
 };
 
-std::string random(const size_t len);
-std::string uuid();
 
 }  // namespace coconut

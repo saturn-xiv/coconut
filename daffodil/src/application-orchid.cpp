@@ -21,8 +21,8 @@
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TTransportUtils.h>
 
-void coconut::application::launch(const uint16_t port,
-                                  std::optional<coconut::Ssl> ssl) {
+void coconut::orchid::application::rpc(const uint16_t port,
+                                       std::optional<coconut::Ssl> ssl) {
   std::shared_ptr<coconut::google::Oauth2Handler> googleOauth2Handler =
       std::make_shared<coconut::google::Oauth2Handler>();
   std::shared_ptr<v1::GoogleOauth2Processor> googleOauth2Processor =

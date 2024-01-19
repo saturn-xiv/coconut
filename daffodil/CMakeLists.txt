@@ -59,7 +59,7 @@ target_link_libraries(daffodil PRIVATE
   tink::jwt::jwt_key_templates tink::jwt::jwt_mac tink::jwt::jwt_mac_config tink::jwt::jwt_signature_config
 )
 
-target_include_directories(daffodil PRIVATE
+target_include_directories(daffodil PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 
   ${CPPCODEC_INCLUDE_DIRS}

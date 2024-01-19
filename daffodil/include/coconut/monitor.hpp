@@ -1,6 +1,7 @@
 #pragma once
 
-#include "coconut/env.hpp"
+
+#include "coconut/thrift.hpp"
 
 #include "Health.h"
 
