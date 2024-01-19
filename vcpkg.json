@@ -23,6 +23,7 @@
     "spdlog",
     "argparse",
     "mailio",
+    "magic-enum",
 
     "boost-filesystem",
     "boost-thread",
@@ -31,6 +32,8 @@
     "boost-program-options",
     "boost-locale",
     "boost-uuid",
-    "boost-test"
+    "boost-test",
+
+    "catch2"
   ]
 }

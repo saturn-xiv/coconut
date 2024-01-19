@@ -35,11 +35,8 @@
 #define TOML_EXCEPTIONS 1
 #include <toml++/toml.h>
 
-#include <hiredis/hiredis.h>
 #include <spdlog/spdlog.h>
-#include <sw/redis++/redis++.h>
 #include <inja/inja.hpp>
-#include <pqxx/pqxx>
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
@@ -65,12 +62,5 @@ struct Ssl {
   std::string ca_file;
 };
 
-class Config {
- private:
-  PostgreSql postgresql;
-  RabbitMQ rabbitmq;
-  Redis redis;
-  Smtp smtp;
-};
 
 }  // namespace coconut

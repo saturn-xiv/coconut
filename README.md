@@ -6,7 +6,7 @@ A flexible authentication solution by CPP.
 
 ```bash
 # use gcc-12
-$ sudo apt install build-essential g++-12 cmake ninja-build unzip linux-libc-dev
+$ sudo apt install build-essential g++-12 cmake pkg-config ninja-build bison unzip linux-libc-dev
 $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 150
 $ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 150
 # clone source code
