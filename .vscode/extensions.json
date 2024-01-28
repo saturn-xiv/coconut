@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    "golang.go",
+    "foxundermoon.shell-format",
+    "mtxr.sqltools",
+    "tamasfe.even-better-toml",
+    "redhat.vscode-xml",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "zxh404.vscode-proto3",
+    "mrkou47.thrift-syntax-support",
+    "ms-vscode-remote.remote-ssh",
+    "ms-azuretools.vscode-docker",
+    "vscode-icons-team.vscode-icons",
+    "akamud.vscode-theme-onedark",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "gruntfuggly.todo-tree",
+    "donjayamanne.githistory",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
