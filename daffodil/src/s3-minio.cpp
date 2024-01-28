@@ -3,6 +3,18 @@
 
 using namespace std::chrono_literals;
 
+coconut::minio::Config::Config(const std::filesystem::path& file,
+                               const std::string& namespace_)
+    : _namespace(namespace_) {
+  std::ifstream ifs(file);
+  nlohmann::json js;
+  ifs >> js;
+  const auto it = js.get<coconut::minio::Credentials>();
+  this->_access_key = it.accessKey;
+  this->_secret_key = it.secretKey;
+  this->_endpoint = it.url;
+}
+
 coconut::minio::Config::Config(const toml::table& node) {
   this->_endpoint = node["endpoint"].value<std::string>().value();
   this->_access_key = node["access-key"].value<std::string>().value();

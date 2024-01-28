@@ -38,6 +38,25 @@
 #include <spdlog/spdlog.h>
 #include <inja/inja.hpp>
 
+namespace nlohmann {
+template <typename T>
+struct adl_serializer<std::optional<T>> {
+  static void from_json(const json& j, std::optional<T>& opt) {
+    if (j.is_null()) {
+      opt = std::nullopt;
+    } else {
+      opt = j.get<T>();
+    }
+  }
+  static void to_json(json& json, std::optional<T> t) {
+    if (t) {
+      json = *t;
+    } else {
+      json = nullptr;
+    }
+  }
+};
+}  // namespace nlohmann
 
 namespace coconut {
 
@@ -50,6 +69,5 @@ struct Ssl {
   std::string key_file;
   std::string ca_file;
 };
-
 
 }  // namespace coconut

@@ -51,6 +51,16 @@ class Client {
   ::minio::s3::BaseUrl _base_url;
 };
 
+struct Credentials {
+  std::string url;
+  std::string accessKey;
+  std::string secretKey;
+  std::string api;
+  std::string path;
+};
+NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(Credentials, url, accessKey, secretKey, api,
+                                   path)
+
 class Config {
  public:
   Config(const std::string& endpoint, const std::string& access_key,
@@ -60,6 +70,8 @@ class Config {
         _secret_key(secret_key),
         _namespace(namespace_) {}
   Config(const toml::table& node);
+  Config(const std::filesystem::path& file, const std::string& namespace_);
+
   inline std::shared_ptr<Client> open() const {
     auto it = std::make_shared<Client>(this->_endpoint, this->_access_key,
                                        this->_secret_key, this->_namespace);
