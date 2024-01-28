@@ -133,13 +133,7 @@ func init() {
 			Use:   "worker",
 			Short: "Start a queue consumer",
 			Run: func(cmd *cobra.Command, args []string) {
-				if gl_debug {
-					log.SetLevel(log.DebugLevel)
-				} else {
-					log.SetLevel(log.InfoLevel)
-				}
 
-				log.Debugf("run on debug mode")
 				log.Debugf("load configuration from %s", gl_config)
 				// config, err := env.NewRpc(gl_config)
 				// if err != nil {
@@ -156,4 +150,14 @@ func init() {
 		root_cmd.AddCommand(cmd)
 	}
 
+}
+
+func set_log_level() {
+	if gl_debug {
+		log.SetLevel(log.DebugLevel)
+	} else {
+		log.SetLevel(log.InfoLevel)
+	}
+
+	log.Debugf("run on debug mode")
 }

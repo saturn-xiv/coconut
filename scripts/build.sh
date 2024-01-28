@@ -15,7 +15,7 @@ function build_backend() {
     local pkg="github.com/saturn-xiv/coconut/cmd"
     local ldflags="-s -w -X '$pkg.repo_url=$(git remote get-url origin)' -X '$pkg.author_name=$(git config --get user.name)' -X '$pkg.author_email=$(git config --get user.email)' -X '$pkg.build_time=$(date -R)' -X '$pkg.git_version=$(git describe --tags --always --dirty --first-parent)'"
 
-    echo "build for aarch64"
+    echo "build for $2"
     GOOS=linux GOARCH=$1 go build -ldflags "$ldflags"
     mkdir -p $TARGET/bin/$2
     mv coconut $TARGET/bin/$2/coconut
@@ -25,6 +25,7 @@ function build_backend() {
 
 build_backend amd64 x86_64
 build_backend arm64 aarch64
+build_backend riscv64 riscv64
 
 cd $WORKSPACE/tmp
 echo "compressing $PACKAGE_NAME..."
