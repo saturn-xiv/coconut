@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 LABEL maintainer="Jeremy Zheng"
 
 ENV DEBIAN_FRONTEND noninteractive

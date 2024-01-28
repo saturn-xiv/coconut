@@ -3,9 +3,10 @@
 set -e
 
 export VERSION=$(date "+%4Y%m%d%H%M%S")
-export CODE="coconut-go"
+export UBUNTU_CODE="jammy"
+export CODE="coconut-go-$UBUNTU_CODE"
 
-buildah pull ubuntu:bionic
+buildah pull ubuntu:$UBUNTU_CODE
 buildah bud --layers -t $CODE .
 podman save --format=oci-archive -o $CODE-$VERSION.tar $CODE
 md5sum $CODE-$VERSION.tar >$CODE-$VERSION.md5

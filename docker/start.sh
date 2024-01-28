@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export CODE="coconut-go"
+export CODE="coconut-go-jammy"
 export NAME="$CODE-$USER"
 
 if podman container exists $NAME; then
