@@ -40,13 +40,6 @@
 
 
 namespace coconut {
-class PostgreSql {};
-
-class RabbitMQ {};
-
-class Redis {};
-
-class Smtp {};
 
 struct Ssl {
   Ssl(const std::string& cert_file, const std::string& key_file,

@@ -24,6 +24,7 @@
     "argparse",
     "mailio",
     "magic-enum",
+    "minio-cpp",
 
     "boost-filesystem",
     "boost-thread",
